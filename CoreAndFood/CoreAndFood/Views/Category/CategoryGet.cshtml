@@ -1,0 +1,20 @@
+﻿@model CoreAndFood.Data.Models.Category
+
+@{
+    ViewData["Title"] = "Update Category";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Update Category</h2>
+<br />
+@using (Html.BeginForm("CategoryUpdate", "Category", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.ID)
+    @Html.LabelFor(x => x.CategoryName)
+    @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.CategoryDescription)
+    @Html.TextAreaFor(x => x.CategoryDescription, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-primary">Save</button>
+}

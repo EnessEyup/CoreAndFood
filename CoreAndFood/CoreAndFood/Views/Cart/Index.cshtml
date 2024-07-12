@@ -1,0 +1,48 @@
+﻿
+@model CoreAndFood.Data.Models.Cart
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Your Shopping Cart</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Food</th>
+            <th>Quantity</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.CartItems)
+        {
+            <tr>
+                <td>@item.Food.Name</td>
+                <td>@item.Quantity</td>
+                <td>
+                    <form asp-action="RemoveFromCart" method="post">
+                        <input type="hidden" name="cartItemId" value="@item.CartItemId" />
+                        <button type="submit">Remove</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h3>Add Food to Cart</h3>
+<form asp-action="AddToCart" method="post">
+    <select name="foodId">
+        @foreach (var food in ViewBag.Foods)
+        {
+            <option value="@food.FoodID">@food.Name</option>
+        }
+    </select>
+    <input type="number" name="quantity" value="1" />
+    <button type="submit">Add to Cart</button>
+</form>
+
+

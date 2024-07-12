@@ -1,0 +1,299 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Core And Food</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Grocery Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script type="application/x-javascript">
+        addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+        function hideURLbar(){ window.scrollTo(0,1); }
+    </script>
+    <link href="~/web/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/web/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/web/css/font-awesome.css" rel="stylesheet" type="text/css" media="all" />
+    <script src="~/web/js/jquery-1.11.1.min.js"></script>
+    <link href='//fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="~/web/js/move-top.js"></script>
+    <script type="text/javascript" src="~/web/js/easing.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="agileits_header">
+        <div class="w3l_header_right1">
+            <h2><a href="mail.html"> Contact Us </a></h2>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            var navoffeset = $(".agileits_header").offset().top;
+            $(window).scroll(function () {
+                var scrollpos = $(window).scrollTop();
+                if (scrollpos >= navoffeset) {
+                    $(".agileits_header").addClass("fixed");
+                } else {
+                    $(".agileits_header").removeClass("fixed");
+                }
+            });
+        });
+    </script>
+    <div class="logo_products">
+        <div class="container">
+            <div class="w3ls_logo_products_left">
+                <h1><a href="index.html"><span>Core</span> Food</a></h1>
+            </div>
+            <div class="w3ls_logo_products_left1">
+                <ul class="special_items">
+                    <li><a href="/Default/Index/">Main Page</a><i>/</i></li>
+                    <li><a href="about.html">About Us</a><i>/</i></li>
+                    <li><a href="products.html">Best Deals</a><i>/</i></li>
+                    <li><a href="/Login/Index/">Management Panel</a></li>
+                </ul>
+            </div>
+            <div class="w3ls_logo_products_left1">
+                <ul class="phone_email">
+                    <li><i class="fa fa-phone" aria-hidden="true"></i>(+90) 505 234 1567</li>
+                    <li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:store@grocery.com">coreandfood@gmail.com</a></li>
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+
+    <div class="banner">
+        <div class="w3l_banner_nav_left">
+            <nav class="navbar nav_bottom">
+                <div class="navbar-header nav_2">
+                    <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                @await Component.InvokeAsync("CategoryGetList")
+            </nav>
+        </div>
+        <div class="w3l_banner_nav_right">
+            <section class="slider">
+                <div class="flexslider">
+                    <ul class="slides">
+                        <li>
+                            <div class="w3l_banner_nav_right_banner">
+                                <h3>Make your <span>food</span> with Spicy.</h3>
+                                <div class="more">
+                                    <a href="products.html" class="button--saqui button--round-l button--text-thick" data-text="Shop now">Shop now</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="w3l_banner_nav_right_banner1">
+                                <h3>Make your <span>food</span> with Spicy.</h3>
+                                <div class="more">
+                                    <a href="products.html" class="button--saqui button--round-l button--text-thick" data-text="Shop now">Shop now</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="w3l_banner_nav_right_banner2">
+                                <h3>upto <i>50%</i> off.</h3>
+                                <div class="more">
+                                    <a href="products.html" class="button--saqui button--round-l button--text-thick" data-text="Shop now">Shop now</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <link rel="stylesheet" href="~/web/css/flexslider.css" type="text/css" media="screen" property="" />
+            <script defer src="~/web/js/jquery.flexslider.js"></script>
+            <script type="text/javascript">
+                $(window).load(function () {
+                    $('.flexslider').flexslider({
+                        animation: "slide",
+                        start: function (slider) {
+                            $('body').removeClass('loading');
+                        }
+                    });
+                });
+            </script>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+
+    <div class="top-brands">
+        <div class="container">
+            <h3>PRODUCTS</h3>
+            @await Component.InvokeAsync("FoodGetList")
+            @RenderBody()
+        </div>
+    </div>
+
+    <div class="cart">
+        <h2>Your Cart</h2>
+        <ul id="cart-items"></ul>
+        <p>Total: $<span id="cart-total">0.00</span></p>
+        <button id="checkout-button">Checkout</button>
+    </div>
+
+    <style>
+        .cart {
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 300px;
+            position: fixed;
+            top: 50px;
+            right: 50px;
+            background-color: white;
+        }
+
+            .cart h2 {
+                margin-top: 0;
+            }
+
+            .cart ul {
+                list-style: none;
+                padding: 0;
+            }
+
+                .cart ul li {
+                    margin-bottom: 5px;
+                }
+
+        #checkout-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+
+    <script>
+        var cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+
+        document.addEventListener('DOMContentLoaded', function () {
+            loadCart();
+            document.querySelectorAll('.add-to-cart').forEach(function (button) {
+                button.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    var productId = this.dataset.productId;
+                    var productName = this.dataset.productName;
+                    var productPrice = parseFloat(this.dataset.productPrice);
+                    addToCart(productId, productName, productPrice);
+                });
+            });
+        });
+
+        function addToCart(id, name, price) {
+            var product = cart.find(item => item.id === id);
+            if (product)
+            {
+                product.quantity += 1;
+                
+            }
+            else
+            {
+                cart.push({ id: id, name: name, price: price, quantity: 1 });
+            }
+            saveCart();
+            updateCart();
+        }
+
+        function updateCart() {
+            var cartItems = document.getElementById('cart-items');
+            var cartTotal = document.getElementById('cart-total');
+            cartItems.innerHTML = '';
+            var total = 0;
+
+            cart.forEach(function (item) {
+                var li = document.createElement('li');
+                li.textContent = `${item.name} - $${item.price} x ${item.quantity}`;
+                cartItems.appendChild(li);
+                total += item.price * (item.quantity);
+            });
+
+            cartTotal.textContent = total.toFixed(2);
+        }
+
+        function saveCart() {
+            sessionStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+        function loadCart() {
+            var storedCart = sessionStorage.getItem('cart');
+            if (storedCart) {
+                cart = JSON.parse(storedCart);
+                updateCart();
+            }
+        }
+
+        document.getElementById('checkout-button').addEventListener('click', function () {
+            alert('Checkout - Total: $' + document.getElementById('cart-total').textContent);
+            cart = [];
+            saveCart();
+            updateCart();
+        });
+    </script>
+
+    <script src="~/web/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".dropdown").hover(
+                function () {
+                    $('.dropdown-menu', this).stop(true, true).slideDown("fast");
+                    $(this).toggleClass('open');
+                },
+                function () {
+                    $('.dropdown-menu', this).stop(true, true).slideUp("fast");
+                    $(this).toggleClass('open');
+                }
+            );
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $().UItoTop({ easingType: 'easeOutQuart' });
+        });
+    </script>
+    <script src="~/web/js/minicart.js"></script>
+    <script>
+        paypal.minicart.render();
+
+        paypal.minicart.cart.on('checkout', function (evt) {
+            var items = this.items(),
+                len = items.length,
+                total = 0,
+                i;
+
+            for (i = 0; i < len; i++) {
+                total += items[i].get('quantity');
+            }
+
+            if (total < 3) {
+                alert('The minimum order quantity is 3. Please add more to your shopping cart before checking out');
+                evt.preventDefault();
+            }
+        });
+    </script>
+
+</body>
+</html>
